@@ -1,6 +1,6 @@
 # llm Espanso Package
 
-This package extends [Espanso](https://espanso.org) to allow querying and receiving output from large language models wherever you are writing. It builds on @rohitna's [chatgpt-script](https://github.com/rohitna/chatgpt-script), adding support for web search, link following, and multiple LLM configurations.
+This package extends [Espanso](https://espanso.org) to allow querying and receiving output from large language models wherever you are writing. It builds on @rohitna's [chatgpt-script](https://github.com/rohitna/chatgpt-script), adding support for web search, link following, multiple LLM configurations, and retrieval-augmented generation.
 
 The package works by sending whatever is in your clipboard along with a preset prompt to the LLM of your choice. You can configure up to three different LLMs, from any provider, including local ones. The package also lets you add web search and link following to any model, meaning you can ask things like "Which NHL games are on this weekend" or "Summarize the content of this webpage: https://example.com" even from models that don't have built-in web access. 
 
@@ -29,7 +29,7 @@ The package currently only works on Linux and MacOS. I hope to add Windows compa
 espanso install llm --git https://gitlab.com/hegghammer/espanso-llm --external
 ```
 
-4. Install the [`llm-cli` program](https://github.com/Hegghammer/llm-cli)
+4. Install the Python program [`llm-cli`](https://github.com/Hegghammer/llm-cli)
 
 ```bash
 git clone https://github.com/Hegghammer/llm-cli.git
