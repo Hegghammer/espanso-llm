@@ -126,17 +126,18 @@ matches:
 
 To understand what is going on, it helps to know that the heart of the package is the `llm-cli` program, which accepts a variety of arguments and executes a call to an LLM endpoint based on the arguments it receives. So the `COMMAND` variable after `cmd:` in the last line above is essentially a shell command that runs `llm-cli` with your chosen parameters, like so:
 
-```bash
+```sh
 /path/to/llm-cli --parameter value
 ```
 
 But this construction can get long and complicated when all the parameters are spelled out. The package therefore defines -- in `package.yml` -- a variety of global variables that serve as building blocks for `COMMAND`. For example, it defines the variable `{{P1_CALL}}` as a shorthand for the script
 
-```bash
+```sh
 /path/to/llm-cli \
---provider-endpoint endpoint1
+--config-file /path/to/config.ini \
+--provider-endpoint endpoint1 \
+--provider_api_key api-key1 \
 --model model1
---api_key api-key1
 ```
 
 This then lets you simply write `{{P1_CALL}}` when you want to invoke the LLM in the `provider_1` slot. Hence the COMMAND of `,ask` can be as short as this:
