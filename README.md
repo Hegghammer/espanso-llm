@@ -21,36 +21,33 @@ The package currently only works on Linux and MacOS. I hope to add Windows compa
 - [Linux](https://espanso.org/docs/install/linux/)
 - [MacOS](https://espanso.org/docs/install/mac/)
 
-2. Install [Python](https://realpython.com/installing-python/).
+2. Install the `llm` package.
 
-3. Install the `llm` package.
-
-```
+```sh
 espanso install llm --git https://gitlab.com/hegghammer/espanso-llm --external
 ```
 
-4. Install the Python program [`llm-cli`](https://github.com/Hegghammer/llm-cli)
+3. Install the Python program [`llm-cli`](https://github.com/Hegghammer/llm-cli)
 
-```bash
+This assumes you have [Python](https://realpython.com/installing-python/) installed.
+
+```sh
 git clone https://github.com/Hegghammer/llm-cli.git
 cd llm-cli
 pip install .
 ```
 
-5. Add the path of `llm-cli` to `config.ini`.
+4. Add important paths to `config.ini`.
 
-```bash
+We must provide paths to the `llm-cli` executable, the database, and the log file.
+
+```sh
 sed -i "s|/path/to/llm-cli/executable|$(which llm-cli)|" $(espanso path packages)/llm/config.ini
-```
-
-6. Add the correct paths to the database and log files in `config.ini`.
-
-```bash
 sed -i "s|/path/to/dbfile|$(espanso path packages)/llm/logs/chats.db|" $(espanso path packages)/llm/config.ini
 sed -i "s|/path/to/logfile|$(espanso path packages)/llm/logs/log.txt|" $(espanso path packages)/llm/config.ini
 ```
 
-7. Configure the LLMs.
+5. Configure the LLMs.
 
 Open `config.ini` in a text editor. You will see that there are three "slots" for LLMs, each with a set of parameters:
 
@@ -60,7 +57,7 @@ Open `config.ini` in a text editor. You will see that there are three "slots" fo
 - `*_api_key`: Your API key for this provider.
 - `*_temperature`: A number from 0 (less creative) to 2. 
 
-8. (Optional) Configure RAG.
+6. (Optional) Configure RAG.
 
 With `config.ini` still open in a text editor, fill in one or more of the three slots for RAG. 
 
@@ -70,9 +67,9 @@ With `config.ini` still open in a text editor, fill in one or more of the three 
 - `*_source_linkformat`: The format of the file links that the LLM provides when citing sources. The options are "markdown" and "wikilinks". The latter is useful if you are quering a [Foam](https://foambubble.github.io/foam/) or [Obsidian](https://obsidian.md) notes collection.
 - `*_temperature`: A number from 0 (less creative) to 2.
 
-9.  Restart Espanso.
+7.  Restart Espanso.
 
-```bash
+```sh
 espanso restart
 ```
 
