@@ -1,0 +1,77 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+
+matches:
+  - trigger: ",explain"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P1_CALL}} \
+            --temperature {{P1_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Explain in detail"
+
+  - trigger: ",2explain"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P2_CALL}} \
+            --temperature {{P2_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Explain in detail"
+
+  - trigger: ",3explain"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P3_CALL}} \
+            --temperature {{P3_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Explain in detail"
+
+  - trigger: ",prevexplain"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P1_CALL}} \
+            --temperature {{P1_TEMP}} \
+            --system-role "A helpful assistant" \
+            --disallow-clipboard \
+            --prompt "Explain the previous response in detail with examples"
+
+  - trigger: ",2prevexplain"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P2_CALL}} \
+            --temperature {{P2_TEMP}} \
+            --system-role "A helpful assistant" \
+            --disallow-clipboard \
+            --prompt "Explain the previous response in detail with examples"
+
+  - trigger: ",3prevexplain"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P3_CALL}} \
+            --temperature {{P3_TEMP}} \
+            --system-role "A helpful assistant" \
+            --disallow-clipboard \
+            --prompt "Explain the previous response in detail with examples"

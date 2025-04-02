@@ -1,0 +1,228 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+
+global_vars:
+  # ----------------------------------------
+  # Core variables
+  # ----------------------------------------
+
+  - name: "LLM_CLI_PATH"
+    type: "echo"
+    params:
+      echo: "/home/thomas/.local/bin/anaconda3/bin/llm-cli"
+  - name: "PKG_HOME"
+    type: "shell"
+    params:
+      cmd: "echo $CONFIG/match/packages/llm"
+  - name: "CONFIGFILE"
+    type: "echo"
+    params:
+      echo: "{{PKG_HOME}}/config.ini"
+
+  # ----------------------------------------
+  # LLM variables
+  # ----------------------------------------
+
+  # Provider 1
+  - name: "P1_ENDPOINT"
+    type: "shell"
+    params:
+      cmd: "grep provider_1_endpoint {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "P1_MODEL"
+    type: "shell"
+    params:
+      cmd: "grep provider_1_model {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "P1_KEY"
+    type: "shell"
+    params:
+      cmd: "grep provider_1_api_key {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "P1_TEMP"
+    type: "shell"
+    params:
+      cmd: "grep provider_1_temperature {{CONFIGFILE}} | awk '{print $3}'"
+
+  # Provider 2
+  - name: "P2_ENDPOINT"
+    type: "shell"
+    params:
+      cmd: "grep provider_2_endpoint {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "P2_MODEL"
+    type: "shell"
+    params:
+      cmd: "grep provider_2_model {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "P2_KEY"
+    type: "shell"
+    params:
+      cmd: "grep provider_2_api_key {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "P2_TEMP"
+    type: "shell"
+    params:
+      cmd: "grep provider_2_temperature {{CONFIGFILE}} | awk '{print $3}'"
+
+  # Provider 3
+  - name: "P3_ENDPOINT"
+    type: "shell"
+    params:
+      cmd: "grep provider_3_endpoint {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "P3_MODEL"
+    type: "shell"
+    params:
+      cmd: "grep provider_2_model {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "P3_KEY"
+    type: "shell"
+    params:
+      cmd: "grep provider_3_api_key {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "P3_TEMP"
+    type: "shell"
+    params:
+      cmd: "grep provider_3_temperature {{CONFIGFILE}} | awk '{print $3}'"
+
+  # ----------------------------------------
+  # LLM calls
+  # ----------------------------------------
+
+  - name: "P1_CALL"
+    type: "echo"
+    params:
+      echo: "{{LLM_CLI_PATH}} --config-file {{CONFIGFILE}} --provider-endpoint {{P1_ENDPOINT}} --model {{P1_MODEL}} --provider-api-key {{P1_KEY}}"
+  - name: "P2_CALL"
+    type: "echo"
+    params:
+      echo: "{{LLM_CLI_PATH}} --config-file {{CONFIGFILE}} --provider-endpoint {{P2_ENDPOINT}} --model {{P2_MODEL}} --provider-api-key {{P2_KEY}}"
+  - name: "P3_CALL"
+    type: "echo"
+    params:
+      echo: "{{LLM_CLI_PATH}} --config-file {{CONFIGFILE}} --provider-endpoint {{P3_ENDPOINT}} --model {{P3_MODEL}} --provider-api-key {{P3_KEY}}"
+
+  # ----------------------------------------
+  # RAG variables
+  # ----------------------------------------
+
+  # RAG 1
+  - name: "R1_DOCS"
+    type: "shell"
+    params:
+      cmd: "grep rag_1_doc_dir {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "R1_DB"
+    type: "shell"
+    params:
+      cmd: "grep rag_1_db_dir {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "R1_TEMP"
+    type: "shell"
+    params:
+      cmd: "grep rag_1_temperature {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "R1_LENGTH"
+    type: "shell"
+    params:
+      cmd: "grep rag_1_excerpt_length {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "R1_FORMAT"
+    type: "shell"
+    params:
+      cmd: "grep rag_1_source_linkformat {{CONFIGFILE}} | awk '{print $3}'"
+
+  # RAG 2
+  - name: "R2_DOCS"
+    type: "shell"
+    params:
+      cmd: "grep rag_2_doc_dir {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "R2_DB"
+    type: "shell"
+    params:
+      cmd: "grep rag_2_db_dir {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "R2_TEMP"
+    type: "shell"
+    params:
+      cmd: "grep rag_2_temperature {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "R2_LENGTH"
+    type: "shell"
+    params:
+      cmd: "grep rag_2_excerpt_length {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "R2_FORMAT"
+    type: "shell"
+    params:
+      cmd: "grep rag_2_source_linkformat {{CONFIGFILE}} | awk '{print $3}'"
+
+  # RAG 3
+  - name: "R3_DOCS"
+    type: "shell"
+    params:
+      cmd: "grep rag_3_doc_dir {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "R3_DB"
+    type: "shell"
+    params:
+      cmd: "grep rag_3_db_dir {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "R3_TEMP"
+    type: "shell"
+    params:
+      cmd: "grep rag_3_temperature {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "R3_LENGTH"
+    type: "shell"
+    params:
+      cmd: "grep rag_3_excerpt_length {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "R3_FORMAT"
+    type: "shell"
+    params:
+      cmd: "grep rag_3_source_linkformat {{CONFIGFILE}} | awk '{print $3}'"
+
+  # ----------------------------------------
+  # RAG calls
+  # ----------------------------------------
+
+  - name: "R1_CALL"
+    type: "echo"
+    params:
+      echo: "{{LLM_CLI_PATH}} --config-file {{CONFIGFILE}} --rag --rag-doc-dir {{R1_DOCS}} --rag-db-dir {{R1_DB}} --temperature {{R1_TEMP}} --rag-excerpt-length {{R1_LENGTH}} --rag-source-linkformat {{R1_FORMAT}}"
+  - name: "R2_CALL"
+    type: "echo"
+    params:
+      echo: "{{LLM_CLI_PATH}} --config-file {{CONFIGFILE}} --rag --rag-doc-dir {{R2_DOCS}} --rag-db-dir {{R2_DB}} --temperature {{R2_TEMP}} --rag-excerpt-length {{R2_LENGTH}} --rag-source-linkformat {{R2_FORMAT}}"
+  - name: "R3_CALL"
+    type: "echo"
+    params:
+      echo: "{{LLM_CLI_PATH}} --config-file {{CONFIGFILE}} --rag --rag-doc-dir {{R3_DOCS}} --rag-db-dir {{R3_DB}} --temperature {{R3_TEMP}} --rag-excerpt-length {{R3_LENGTH}} --rag-source-linkformat {{R3_FORMAT}}"
+
+  # ----------------------------------------
+  # Variables for clearing
+  # ----------------------------------------
+
+  - name: "DB_FILE"
+    type: "shell"
+    params:
+      cmd: "grep db_file {{CONFIGFILE}} | awk '{print $3}'"
+  - name: "LOG_FILE"
+    type: "shell"
+    params:
+      cmd: "grep log_file {{CONFIGFILE}} | awk '{print $3}'"
+
+  # ---------------- END ------------------------
+# With these global variables you can build the commands that you need, like so:
+
+# matches:
+#   - trigger: ",ask"
+#     replace: "{{output}}"
+#     vars:
+#       - name: output
+#         type: shell
+#         params:
+#           cmd: |
+#             {{P1_CALL}} \
+#             --temperature {{P1_TEMP}} \
+#             --system-role "A helpful assistant" \
+#             --prompt "Answer this concisely"
+#
+#    - trigger: ",2ask"
+#     replace: "{{output}}"
+#     vars:
+#       - name: output
+#         type: shell
+#         params:
+#           cmd: |
+#             {{P2_CALL}} \
+#             --temperature {{P2_TEMP}} \
+#             --system-role "A helpful assistant" \
+#             --prompt "Answer this concisely"
+#
+# I recommend leaving this file (package.yml) intact and placing your commands
+# in a separate folder so that you can play around with prompts without
+# breaking the installation. The `/prompts` folder contains some suggestions
+# that you can build on.
+

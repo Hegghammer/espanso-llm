@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+
+matches:
+  - trigger: ",sum"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P1_CALL}} \
+            --temperature {{P1_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Summarize this"
+
+  - trigger: ",2sum"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P2_CALL}} \
+            --temperature {{P2_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Summarize this"
+
+  - trigger: ",3sum"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P3_CALL}} \
+            --temperature {{P3_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Summarize this"

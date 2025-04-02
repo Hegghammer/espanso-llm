@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+
+matches:
+  - trigger: ",debug"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P1_CALL}} \
+            --temperature {{P1_TEMP}} \
+            --system-role "A helpful and wise programmer" \
+            --prompt "Debug this code"
+
+  - trigger: ",2debug"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P2_CALL}} \
+            --temperature {{P2_TEMP}} \
+            --system-role "A helpful and wise programmer" \
+            --prompt "Debug this code"
+
+  - trigger: ",3debug"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P3_CALL}} \
+            --temperature {{P3_TEMP}} \
+            --system-role "A helpful and wise programmer" \
+            --prompt "Debug this code"

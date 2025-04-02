@@ -1,0 +1,146 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+
+matches:
+  - trigger: ",tra-fr"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P1_CALL}} \
+            --temperature {{P1_TEMP}} \
+            --system-role "A helpful translator" \
+            --prompt "Translate the following to French. Provide only the translation."
+
+  - trigger: ",tra-ar"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P1_CALL}} \
+            --temperature {{P1_TEMP}} \
+            --system-role "A helpful translator" \
+            --prompt "Translate the following to Arabic. Provide only the translation."
+
+  - trigger: ",tra-no"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P1_CALL}} \
+            --temperature {{P1_TEMP}} \
+            --system-role "A helpful translator" \
+            --prompt "Translate the following to Norwegian. Provide only the translation."
+
+  - trigger: ",tra-en"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P1_CALL}} \
+            --temperature {{P1_TEMP}} \
+            --system-role "A helpful translator" \
+            --prompt "Translate the following to English. Provide only the translation."
+
+  - trigger: ",2tra-fr"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P2_CALL}} \
+            --temperature {{P2_TEMP}} \
+            --system-role "A helpful translator" \
+            --prompt "Translate the following to French. Provide only the translation."
+
+  - trigger: ",2tra-ar"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P2_CALL}} \
+            --temperature {{P2_TEMP}} \
+            --system-role "A helpful translator" \
+            --prompt "Translate the following to Arabic. Provide only the translation."
+
+  - trigger: ",2tra-no"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P2_CALL}} \
+            --temperature {{P2_TEMP}} \
+            --system-role "A helpful translator" \
+            --prompt "Translate the following to Norwegian. Provide only the translation."
+
+  - trigger: ",2tra-en"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P2_CALL}} \
+            --temperature {{P2_TEMP}} \
+            --system-role "A helpful translator" \
+            --prompt "Translate the following to English. Provide only the translation."
+
+  - trigger: ",3tra-fr"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P3_CALL}} \
+            --temperature {{P3_TEMP}} \
+            --system-role "A helpful translator" \
+            --prompt "Translate the following to French. Provide only the translation."
+
+  - trigger: ",3tra-ar"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P3_CALL}} \
+            --temperature {{P3_TEMP}} \
+            --system-role "A helpful translator" \
+            --prompt "Translate the following to Arabic. Provide only the translation."
+
+  - trigger: ",3tra-no"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P3_CALL}} \
+            --temperature {{P3_TEMP}} \
+            --system-role "A helpful translator" \
+            --prompt "Translate the following to Norwegian"
+
+  - trigger: ",3tra-en"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P3_CALL}} \
+            --temperature {{P3_TEMP}} \
+            --system-role "A helpful translator" \
+            --prompt "Translate the following to English. Provide only the translation."

@@ -1,0 +1,7 @@
+author: Thomas Hegghammer
+description: Query LLMs from Espanso
+name: llm
+title: llm
+version: 0.0.2
+homepage: "https://github.com/hegghammer/espanso-llm"
+tags: ["llms", "ai"]

@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+
+matches:
+  - trigger: ",test"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "{{LLM_CLI_PATH}} -h"
+
+  - trigger: ",cdb"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            if rm {{DB_FILE}}; then
+              echo "Chat history cleared"
+            else
+              echo "Chat history was already empty."
+            fi
+
+  - trigger: ",clog"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            if rm {{LOG_FILE}}; then
+              echo "Log cleared"
+            else
+              echo "Log was already empty."
+            fi
+
+  - trigger: ",cclip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{PYTHONPATH}} -c "import pyperclip; pyperclip.copy(''); print('Clipboard cleared.')"

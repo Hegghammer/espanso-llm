@@ -1,0 +1,6 @@
+langchain-chroma
+langchain-community
+langchain-ollama
+pyperclip
+requests
+

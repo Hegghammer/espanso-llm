@@ -1,0 +1,213 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+
+matches:
+  # --- Simple ask -----------------
+  - trigger: ",ask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P1_CALL}} \
+            --temperature {{P1_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Answer this concisely"
+
+  - trigger: ",2ask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P2_CALL}} \
+            --temperature {{P2_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Answer this concisely"
+
+  - trigger: ",3ask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P3_CALL}} \
+            --temperature {{P3_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Answer this concisely"
+
+  # --- Ask with web search -----------------
+  - trigger: ",webask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P1_CALL}} \
+            --web-search \
+            --temperature {{P1_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Answer this concisely"
+
+  - trigger: ",2webask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P2_CALL}} \
+            --web-search \
+            --temperature {{P2_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Answer this concisely"
+
+  - trigger: ",3webask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P3_CALL}} \
+            --web-search \
+            --temperature {{P3_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Answer this concisely"
+
+  # --- Ask with link following ----------------------
+  - trigger: ",linkask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P1_CALL}} \
+            --follow-links \
+            --temperature {{P1_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Answer this concisely"
+
+  - trigger: ",2linkask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P2_CALL}} \
+            --follow-links \
+            --temperature {{P2_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Answer this concisely"
+
+  - trigger: ",3linkask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P3_CALL}} \
+            --follow-links \
+            --temperature {{P3_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Answer this concisely"
+
+  # --- Ask with fulltext web search -----------------
+  # NB: this can consume a lot of tokens
+
+  - trigger: ",webfullask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P1_CALL}} \
+            --web-search \
+            --full-content \
+            --temperature {{P1_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Answer this concisely"
+
+  - trigger: ",2webfullask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P2_CALL}} \
+            --web-search \
+            --full-content \
+            --temperature {{P2_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Answer this concisely"
+
+  - trigger: ",3webfullask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P3_CALL}} \
+            --web-search \
+            --full-content \            
+            --temperature {{P3_TEMP}} \
+            --system-role "A helpful assistant" \
+            --prompt "Answer this concisely"
+
+  # --- Ask with RAG -----------------
+  - trigger: ",ragask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "{{R1_CALL}}"
+
+  - trigger: ",ragindex"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "{{R1_CALL}} --rag-index-files"
+
+  - trigger: ",2ragask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "{{R2_CALL}}"
+
+  - trigger: ",2ragindex"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "{{R2_CALL}} --rag-index-files"
+
+  - trigger: ",3ragask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "{{R3_CALL}}"
+
+  - trigger: ",3ragindex"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "{{R3_CALL}} --rag-index-files"
