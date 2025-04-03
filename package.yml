@@ -5,10 +5,6 @@ global_vars:
   # Core variables
   # ----------------------------------------
 
-  - name: "LLM_CLI_PATH"
-    type: "echo"
-    params:
-      echo: "/home/thomas/.local/bin/anaconda3/bin/llm-cli"
   - name: "PKG_HOME"
     type: "shell"
     params:
@@ -17,6 +13,10 @@ global_vars:
     type: "echo"
     params:
       echo: "{{PKG_HOME}}/config.ini"
+  - name: "LLM_CLI_PATH"
+    type: "echo"
+    params:
+      echo: "grep llm_cli_path {{CONFIGFILE}} | awk '{print $3}'"
 
   # ----------------------------------------
   # LLM variables
