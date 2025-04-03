@@ -14,32 +14,31 @@ The package comes with a syntax that lets you associate any trigger phrase with 
 
 ## Installation
 
-The package currently only works on Linux and MacOS. I hope to add Windows compatibility in due course.
+Espanso-llm works on all three major operating systems, but the procedure for Windows is slightly different in places (I will point those places out.)
 
-1. Install Espanso.
+**1. Install [Espanso](https://espanso.org/install/).**
 
-- [Linux](https://espanso.org/docs/install/linux/)
-- [MacOS](https://espanso.org/docs/install/mac/)
+**2. Install the `llm` package.**
 
-2. Install the `llm` package.
-
-```sh
+```
 espanso install llm --git https://github.com/hegghammer/espanso-llm --external
 ```
 
-3. Install the Python program [`llm-cli`](https://github.com/Hegghammer/llm-cli)
+**3. Install the Python program [`llm-cli`](https://github.com/Hegghammer/llm-cli)**
 
-This assumes you have [Python](https://realpython.com/installing-python/) installed.
+This assumes you have [Python](https://realpython.com/installing-python/) (>=3.8,<3.12) installed.
 
-```sh
+```
 git clone https://github.com/Hegghammer/llm-cli.git
 cd llm-cli
 pip install .
 ```
 
-4. Add important paths to `config.ini`.
+**4. Add paths to llm-cli executable, `chats.db` and `log.txt` in `config.ini`.**
 
-We must provide paths to the `llm-cli` executable, the database, and the log file.
+You must provide Espanso-llm with system-specific paths to the `llm-cli` executable, the database, and the log file.
+
+On Linux and MacOS you can simply run this command:
 
 ```sh
 sed -i "s|/path/to/llm-cli/executable|$(which llm-cli)|" $(espanso path packages)/llm/config.ini
@@ -47,7 +46,27 @@ sed -i "s|/path/to/dbfile|$(espanso path packages)/llm/logs/chats.db|" $(espanso
 sed -i "s|/path/to/logfile|$(espanso path packages)/llm/logs/log.txt|" $(espanso path packages)/llm/config.ini
 ```
 
-5. Configure the LLMs.
+On Windows this is best done manually. 
+
+a. In a terminal, run `where llm-cli` to get the path to the llm-cli executable on your system. Copy it to the clipboard
+b. Open `config.ini` in Notepad. On line 2, paste in the path to the llm-cli executable to the right of the equal sign, replacing `/path/to/llm-cli/executable`.
+c. Back in the terminal, run `espanso path packages` to output the path to the Espanso packages folder. Copy it to the clipboard. 
+d. Back in `config.ini` in Notepad, on line 3, replace `/path/to/dbfile` with the path to the Espanso packages folder in your clipboard. Add `/llm/logs/chats.db` at the end.
+e. On line 4, replace `/path/to/logfile` with the path to the Espanso packages folder in your clipboard. Add `/llm/logs/log.txt` at the end.
+
+**4a. (Windows only): Replace `package.yml` and `/prompts`** 
+
+NB: Windows users must also replace `package.yml` with the Windows-compatible version supplied with the package. 
+
+a. Delete `package.yml`
+b. Rename `package.yml.windows` to `package.yml`
+
+You also need to replace the prompts folder with the Windows-compatible one. 
+
+a. Delete `/prompts`
+b. Rename `/prompts.windows` to `/prompts`
+
+**5. Configure the LLMs.**
 
 Open `config.ini` in a text editor. You will see that there are three "slots" for LLMs, each with a set of parameters:
 
@@ -57,7 +76,7 @@ Open `config.ini` in a text editor. You will see that there are three "slots" fo
 - `*_api_key`: Your API key for this provider.
 - `*_temperature`: A number from 0 (less creative) to 2. 
 
-6. (Optional) Configure RAG.
+**6. (Optional) Configure RAG.**
 
 With `config.ini` still open in a text editor, fill in one or more of the three slots for RAG. 
 
@@ -67,9 +86,9 @@ With `config.ini` still open in a text editor, fill in one or more of the three 
 - `*_source_linkformat`: The format of the file links that the LLM provides when citing sources. The options are "markdown" and "wikilinks". The latter is useful if you are quering a [Foam](https://foambubble.github.io/foam/) or [Obsidian](https://obsidian.md) notes collection.
 - `*_temperature`: A number from 0 (less creative) to 2.
 
-7.  Restart Espanso.
+**7.  Restart Espanso.**
 
-```sh
+```
 espanso restart
 ```
 
@@ -122,6 +141,7 @@ matches:
         type: shell
         params:
           cmd: COMMAND
+#          shell: powershell # Add this line if on Windows
 ```
 
 To understand what is going on, it helps to know that the heart of the package is the `llm-cli` program, which accepts a variety of arguments and executes a call to an LLM endpoint based on the arguments it receives. So the `COMMAND` variable after `cmd:` in the last line above is essentially a shell command that runs `llm-cli` with your chosen parameters, like so:
@@ -151,6 +171,8 @@ cmd: |
 ```
 
 The `--prompt` parameter is important; this is where you can really steer the LLM to do what you want. 
+
+Note that on Windows, you cannot use backslashes for multi-line scripting; you must put the command on a single line. 
 
 To see all the available parameters, run `llm-cli -h` in your terminal or simply type `,test` in any text editor.
 
