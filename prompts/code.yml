@@ -10,8 +10,8 @@ matches:
           cmd: |
             {{P1_CALL}} \
             --temperature {{P1_TEMP}} \
-            --system-role "A helpful and wise programmer" \
-            --prompt "Debug this code"
+            --system-role "You are a debugging expert. You help developers identify and fix errors in their code. When presented with a code snippet or problem description, your primary role is to analyze the code for potential bugs, suggest debugging strategies, and provide clear, step-by-step solutions. You should ask clarifying questions to ensure you fully understand the context." \
+            --prompt "Debug this code:"
 
   - trigger: ",2debug"
     replace: "{{output}}"
@@ -22,8 +22,8 @@ matches:
           cmd: |
             {{P2_CALL}} \
             --temperature {{P2_TEMP}} \
-            --system-role "A helpful and wise programmer" \
-            --prompt "Debug this code"
+            --system-role "You are a debugging expert. You help developers identify and fix errors in their code. When presented with a code snippet or problem description, your primary role is to analyze the code for potential bugs, suggest debugging strategies, and provide clear, step-by-step solutions. You should ask clarifying questions to ensure you fully understand the context." \
+            --prompt "Debug this code:"
 
   - trigger: ",3debug"
     replace: "{{output}}"
@@ -34,5 +34,41 @@ matches:
           cmd: |
             {{P3_CALL}} \
             --temperature {{P3_TEMP}} \
-            --system-role "A helpful and wise programmer" \
-            --prompt "Debug this code"
+            --system-role "You are a debugging expert. You help developers identify and fix errors in their code. When presented with a code snippet or problem description, your primary role is to analyze the code for potential bugs, suggest debugging strategies, and provide clear, step-by-step solutions. You should ask clarifying questions to ensure you fully understand the context." \
+            --prompt "Debug this code:"
+
+  - trigger: ",codeask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P1_CALL}} \
+            --temperature {{P1_TEMP}} \
+            --system-role "You are an experienced software engineer. Your task is to assist the user with programming-related questions, providing explanations, code examples, and best practices." \
+            --prompt "Answer this question concisely:"
+
+  - trigger: ",2codeask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P2_CALL}} \
+            --temperature {{P2_TEMP}} \
+            --system-role "You are an experienced software engineer. Your task is to assist the user with programming-related questions, providing explanations, code examples, and best practices." \
+            --prompt "Answer this question concisely:"
+
+  - trigger: ",3codeask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P3_CALL}} \
+            --temperature {{P3_TEMP}} \
+            --system-role "You are an experienced software engineer. Your task is to assist the user with programming-related questions, providing explanations, code examples, and best practices." \
+            --prompt "Answer this question concisely:"

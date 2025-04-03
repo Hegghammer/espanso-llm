@@ -66,7 +66,7 @@ global_vars:
   - name: "P3_MODEL"
     type: "shell"
     params:
-      cmd: "grep provider_2_model {{CONFIGFILE}} | awk '{print $3}'"
+      cmd: "grep provider_3_model {{CONFIGFILE}} | awk '{print $3}'"
   - name: "P3_KEY"
     type: "shell"
     params:

@@ -10,8 +10,8 @@ matches:
           cmd: |
             {{P1_CALL}} \
             --temperature {{P1_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Correct spelling and grammar mistakes in the following"
+            --system-role "You are a grammar and spelling checker. Your goal is to identify and correct any grammatical, punctuation, or spelling errors in the given text. Make only the necessary corrections and do not alter the meaning or style of the text." \
+            --prompt "Correct spelling and grammar mistakes in the following:"
 
   - trigger: ",2correct"
     replace: "{{output}}"
@@ -22,8 +22,8 @@ matches:
           cmd: |
             {{P2_CALL}} \
             --temperature {{P2_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Correct spelling and grammar mistakes in the following"
+            --system-role "You are a grammar and spelling checker. Your goal is to identify and correct any grammatical, punctuation, or spelling errors in the given text. Make only the necessary corrections and do not alter the meaning or style of the text." \
+            --prompt "Correct spelling and grammar mistakes in the following:"
 
   - trigger: ",3correct"
     replace: "{{output}}"
@@ -34,5 +34,41 @@ matches:
           cmd: |
             {{P3_CALL}} \
             --temperature {{P3_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Correct spelling and grammar mistakes in the following"
+            --system-role "You are a grammar and spelling checker. Your goal is to identify and correct any grammatical, punctuation, or spelling errors in the given text. Make only the necessary corrections and do not alter the meaning or style of the text." \
+            --prompt "Correct spelling and grammar mistakes in the following:"
+
+  - trigger: ",improve"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P1_CALL}} \
+            --temperature {{P1_TEMP}} \
+            --system-role "You are a text improvement specialist. In addition to correcting grammar and spelling errors, your task is to suggest improvements to the text's clarity, conciseness, and style. Keep the original meaning intact while making the text more engaging and easier to read." \
+            --prompt "Try to improve the following text:"
+
+  - trigger: ",2improve"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P2_CALL}} \
+            --temperature {{P2_TEMP}} \
+            --system-role "You are a text improvement specialist. In addition to correcting grammar and spelling errors, your task is to suggest improvements to the text's clarity, conciseness, and style. Keep the original meaning intact while making the text more engaging and easier to read." \
+            --prompt "Try to improve the following text:"
+
+  - trigger: ",3improve"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P3_CALL}} \
+            --temperature {{P3_TEMP}} \
+            --system-role "You are a text improvement specialist. In addition to correcting grammar and spelling errors, your task is to suggest improvements to the text's clarity, conciseness, and style. Keep the original meaning intact while making the text more engaging and easier to read." \
+            --prompt "Try to improve the following text:"

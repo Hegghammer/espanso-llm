@@ -11,8 +11,7 @@ matches:
           cmd: |
             {{P1_CALL}} \
             --temperature {{P1_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Answer this concisely"
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely."
 
   - trigger: ",2ask"
     replace: "{{output}}"
@@ -23,8 +22,7 @@ matches:
           cmd: |
             {{P2_CALL}} \
             --temperature {{P2_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Answer this concisely"
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely."
 
   - trigger: ",3ask"
     replace: "{{output}}"
@@ -35,8 +33,7 @@ matches:
           cmd: |
             {{P3_CALL}} \
             --temperature {{P3_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Answer this concisely"
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely."
 
   # --- Ask with web search -----------------
   - trigger: ",webask"
@@ -49,8 +46,7 @@ matches:
             {{P1_CALL}} \
             --web-search \
             --temperature {{P1_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Answer this concisely"
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely based on the provided context."
 
   - trigger: ",2webask"
     replace: "{{output}}"
@@ -62,8 +58,7 @@ matches:
             {{P2_CALL}} \
             --web-search \
             --temperature {{P2_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Answer this concisely"
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely based on the provided context."
 
   - trigger: ",3webask"
     replace: "{{output}}"
@@ -75,8 +70,7 @@ matches:
             {{P3_CALL}} \
             --web-search \
             --temperature {{P3_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Answer this concisely"
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely based on the provided context."
 
   # --- Ask with link following ----------------------
   - trigger: ",linkask"
@@ -89,8 +83,7 @@ matches:
             {{P1_CALL}} \
             --follow-links \
             --temperature {{P1_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Answer this concisely"
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely based on the provided context."
 
   - trigger: ",2linkask"
     replace: "{{output}}"
@@ -102,8 +95,7 @@ matches:
             {{P2_CALL}} \
             --follow-links \
             --temperature {{P2_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Answer this concisely"
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely based on the provided context."
 
   - trigger: ",3linkask"
     replace: "{{output}}"
@@ -115,8 +107,7 @@ matches:
             {{P3_CALL}} \
             --follow-links \
             --temperature {{P3_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Answer this concisely"
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely based on the provided context."
 
   # --- Ask with fulltext web search -----------------
   # NB: this can consume a lot of tokens
@@ -132,8 +123,7 @@ matches:
             --web-search \
             --full-content \
             --temperature {{P1_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Answer this concisely"
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely based on the provided context."
 
   - trigger: ",2webfullask"
     replace: "{{output}}"
@@ -146,8 +136,7 @@ matches:
             --web-search \
             --full-content \
             --temperature {{P2_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Answer this concisely"
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely based on the provided context."
 
   - trigger: ",3webfullask"
     replace: "{{output}}"
@@ -160,8 +149,7 @@ matches:
             --web-search \
             --full-content \            
             --temperature {{P3_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Answer this concisely"
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely based on the provided context."
 
   # --- Ask with RAG -----------------
   - trigger: ",ragask"
@@ -170,7 +158,9 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "{{R1_CALL}}"
+          cmd: |
+            {{R1_CALL}} \
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely based on the provided context."
 
   - trigger: ",ragindex"
     replace: "{{output}}"
@@ -178,7 +168,10 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "{{R1_CALL}} --rag-index-files"
+          cmd: |
+            {{R1_CALL}} \
+            --rag-index-files \
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely based on the provided context."
 
   - trigger: ",2ragask"
     replace: "{{output}}"
@@ -186,7 +179,9 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "{{R2_CALL}}"
+          cmd: |
+            {{R2_CALL}} \
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely based on the provided context."
 
   - trigger: ",2ragindex"
     replace: "{{output}}"
@@ -194,7 +189,10 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "{{R2_CALL}} --rag-index-files"
+          cmd: |
+            {{R2_CALL}} \
+            --rag-index-files \
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely based on the provided context."
 
   - trigger: ",3ragask"
     replace: "{{output}}"
@@ -202,7 +200,9 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "{{R3_CALL}}"
+          cmd: |
+            {{R3_CALL}} \
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely based on the provided context."
 
   - trigger: ",3ragindex"
     replace: "{{output}}"
@@ -210,4 +210,7 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "{{R3_CALL}} --rag-index-files"
+          cmd: |
+            {{R3_CALL}} \
+            --rag-index-files \
+            --system-role "You are a helpful assistant. Your goal is to answer the user's questions accurately and concisely based on the provided context."

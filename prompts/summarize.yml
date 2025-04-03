@@ -10,8 +10,8 @@ matches:
           cmd: |
             {{P1_CALL}} \
             --temperature {{P1_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Summarize this"
+            --system-role "You are a concise summarizer. Your task is to condense the given text into a shorter version while retaining the key points and essential information." \
+            --prompt "Summarize this:"
 
   - trigger: ",2sum"
     replace: "{{output}}"
@@ -22,8 +22,8 @@ matches:
           cmd: |
             {{P2_CALL}} \
             --temperature {{P2_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Summarize this"
+            --system-role "You are a concise summarizer. Your task is to condense the given text into a shorter version while retaining the key points and essential information." \
+            --prompt "Summarize this:"
 
   - trigger: ",3sum"
     replace: "{{output}}"
@@ -34,5 +34,5 @@ matches:
           cmd: |
             {{P3_CALL}} \
             --temperature {{P3_TEMP}} \
-            --system-role "A helpful assistant" \
-            --prompt "Summarize this"
+            --system-role "You are a concise summarizer. Your task is to condense the given text into a shorter version while retaining the key points and essential information." \
+            --prompt "Summarize this:"

@@ -10,7 +10,7 @@ matches:
           cmd: |
             {{P1_CALL}} \
             --temperature {{P1_TEMP}} \
-            --system-role "A helpful assistant" \
+            --system-role "You are a knowledgeable and patient explainer. Your task is to help the user understand complex concepts by breaking them down into simple, easy-to-understand parts, using analogies and examples where appropriate." \
             --prompt "Explain in detail"
 
   - trigger: ",2explain"
@@ -22,7 +22,7 @@ matches:
           cmd: |
             {{P2_CALL}} \
             --temperature {{P2_TEMP}} \
-            --system-role "A helpful assistant" \
+            --system-role "You are a knowledgeable and patient explainer. Your task is to help the user understand complex concepts by breaking them down into simple, easy-to-understand parts, using analogies and examples where appropriate." \
             --prompt "Explain in detail"
 
   - trigger: ",3explain"
@@ -34,7 +34,7 @@ matches:
           cmd: |
             {{P3_CALL}} \
             --temperature {{P3_TEMP}} \
-            --system-role "A helpful assistant" \
+            --system-role "You are a knowledgeable and patient explainer. Your task is to help the user understand complex concepts by breaking them down into simple, easy-to-understand parts, using analogies and examples where appropriate." \
             --prompt "Explain in detail"
 
   - trigger: ",prevexplain"
@@ -46,7 +46,7 @@ matches:
           cmd: |
             {{P1_CALL}} \
             --temperature {{P1_TEMP}} \
-            --system-role "A helpful assistant" \
+            --system-role "You are a knowledgeable and patient explainer. Your task is to help the user understand complex concepts by breaking them down into simple, easy-to-understand parts, using analogies and examples where appropriate." \
             --disallow-clipboard \
             --prompt "Explain the previous response in detail with examples"
 
@@ -59,7 +59,7 @@ matches:
           cmd: |
             {{P2_CALL}} \
             --temperature {{P2_TEMP}} \
-            --system-role "A helpful assistant" \
+            --system-role "You are a knowledgeable and patient explainer. Your task is to help the user understand complex concepts by breaking them down into simple, easy-to-understand parts, using analogies and examples where appropriate." \
             --disallow-clipboard \
             --prompt "Explain the previous response in detail with examples"
 
@@ -72,6 +72,6 @@ matches:
           cmd: |
             {{P3_CALL}} \
             --temperature {{P3_TEMP}} \
-            --system-role "A helpful assistant" \
+            --system-role "You are a knowledgeable and patient explainer. Your task is to help the user understand complex concepts by breaking them down into simple, easy-to-understand parts, using analogies and examples where appropriate." \
             --disallow-clipboard \
             --prompt "Explain the previous response in detail with examples"
