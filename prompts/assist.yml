@@ -1,0 +1,34 @@
+matches:
+  - trigger: ",syn"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P1_CALL}} \
+            --temperature 2 \
+            --system-role "You are a highly skilled thesaurus expert. Your sole function is to provide synonyms for a given word, focusing on nuanced and appropriate replacements. Respond only with the synonyms." \
+            --prompt "Give me ten synonyms for the following word or expression, ranked by semantic similarity:"
+  - trigger: ",2syn"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P2_CALL}} \
+            --temperature 2 \
+            --system-role "You are a highly skilled thesaurus expert. Your sole function is to provide synonyms for a given word, focusing on nuanced and appropriate replacements. Respond only with the synonyms." \
+            --prompt "Give me ten synonyms for the following word or expression, ranked by semantic similarity:"
+  - trigger: ",3syn"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            {{P3_CALL}} \
+            --temperature 2 \
+            --system-role "You are a highly skilled thesaurus expert. Your sole function is to provide synonyms for a given word, focusing on nuanced and appropriate replacements. Respond only with the synonyms." \
+            --prompt "Give me ten synonyms for the following word or expression, ranked by semantic similarity:"
