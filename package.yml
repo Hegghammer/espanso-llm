@@ -14,9 +14,9 @@ global_vars:
     params:
       echo: "{{PKG_HOME}}/config.ini"
   - name: "LLM_CLI_PATH"
-    type: "echo"
+    type: "shell"
     params:
-      echo: "grep llm_cli_path {{CONFIGFILE}} | awk '{print $3}'"
+      cmd: "grep llm_cli_path {{CONFIGFILE}} | awk '{print $3}'"
 
   # ----------------------------------------
   # LLM variables
