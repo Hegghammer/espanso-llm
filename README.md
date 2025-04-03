@@ -24,7 +24,7 @@ The package currently only works on Linux and MacOS. I hope to add Windows compa
 2. Install the `llm` package.
 
 ```sh
-espanso install llm --git https://gitlab.com/hegghammer/espanso-llm --external
+espanso install llm --git https://github.com/hegghammer/espanso-llm --external
 ```
 
 3. Install the Python program [`llm-cli`](https://github.com/Hegghammer/llm-cli)
