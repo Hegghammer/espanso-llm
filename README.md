@@ -49,21 +49,27 @@ sed -i "s|/path/to/logfile|$(espanso path packages)/llm/logs/log.txt|" $(espanso
 On Windows this is best done manually. 
 
 a. In a terminal, run `where llm-cli` to get the path to the llm-cli executable on your system. Copy it to the clipboard
+
 b. Open `config.ini` in Notepad. On line 2, paste in the path to the llm-cli executable to the right of the equal sign, replacing `/path/to/llm-cli/executable`.
+
 c. Back in the terminal, run `espanso path packages` to output the path to the Espanso packages folder. Copy it to the clipboard. 
-d. Back in `config.ini` in Notepad, on line 3, replace `/path/to/dbfile` with the path to the Espanso packages folder in your clipboard. Add `/llm/logs/chats.db` at the end.
-e. On line 4, replace `/path/to/logfile` with the path to the Espanso packages folder in your clipboard. Add `/llm/logs/log.txt` at the end.
+
+d. Back in `config.ini` in Notepad, on line 3, replace `/path/to/dbfile` with the path to the Espanso packages folder in your clipboard. Append `/llm/logs/chats.db` to the path.
+
+e. On line 4, replace `/path/to/logfile` with the path to the Espanso packages folder in your clipboard. Append `/llm/logs/log.txt` to the path.
 
 **4a. (Windows only): Replace `package.yml` and `/prompts`** 
 
-NB: Windows users must also replace `package.yml` with the Windows-compatible version supplied with the package. 
+Windows users must also replace `package.yml` with the Windows-compatible version supplied with the package. 
 
 a. Delete `package.yml`
+
 b. Rename `package.yml.windows` to `package.yml`
 
 You also need to replace the prompts folder with the Windows-compatible one. 
 
 a. Delete `/prompts`
+
 b. Rename `/prompts.windows` to `/prompts`
 
 **5. Configure the LLMs.**
