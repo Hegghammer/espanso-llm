@@ -17,6 +17,11 @@ global_vars:
     type: "shell"
     params:
       cmd: "grep llm_cli_path {{CONFIGFILE}} | awk '{print $3}'"
+  # Optional (run `which python` or `which python3` to get the path.)
+  # - name: "PYTHONPATH"
+  #   type: "echo"
+  #   params:
+  #     echo: "/path/to/your/python/executable"
 
   # ----------------------------------------
   # LLM variables

@@ -35,6 +35,7 @@ matches:
               echo "Log was already empty."
             fi
 
+  # NB requires {{PYTHONPATH}} in package.yml
   - trigger: ",cclip"
     replace: "{{output}}"
     vars:
@@ -43,3 +44,15 @@ matches:
         params:
           cmd: |
             {{PYTHONPATH}} -c "import pyperclip; pyperclip.copy(''); print('Clipboard cleared.')"
+
+  - trigger: ",version"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            PKG=$(grep version {{PKG_HOME}}/_manifest.yml | awk '{print $2}')
+            UTIL=$({{LLM_CLI_PATH}} --version)
+            echo "llm-espanso version: $PKG"
+            echo "llm-cli version: $UTIL"
